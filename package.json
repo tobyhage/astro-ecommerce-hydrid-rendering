@@ -31,7 +31,7 @@
   "author": "Creative Tim <hello@creative-tim.com> (https://www.creative-tim.com/)",
   "license": "MIT",
   "dependencies": {
-    "@astrojs/react": "^1.2.1",
+    "@astrojs/react": "^2.0.2",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "astro": "^2.0.1",

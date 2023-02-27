@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../../public/data.json';
+import '../../assets/scss/astro-ecommerce.scss';
+import CardCategory from '../components/products/cardCategory';
+import Navbar from '../components/navbar';
+import StoreDoubleColumn from '../components/store/storeDoubleColumn';
+import IncentiveLarge from '../components/incentives/incentiveLarge';
+import ProductOverviewGrid from '../components/products/productOverviewGrid';
+import ProductFeature from '../components/products/productFeature';
+
+import PromoSectionLarge from '../components/promo/promoSectionLarge';
+---
+
+<Layout title="Landing Page">
+  <main>
+    <Navbar />
+    <div class="container my-5">
+      <ProductFeature
+        title={data.about.title}
+        images={data.about.images}
+        full_description={data.about.mission}
+        featuresDetails={data.about.values}
+      />
+
+      <div class="my-10">
+        <IncentiveLarge />
+      </div>
+
+      <StoreDoubleColumn />
+    </div>
+  </main>
+</Layout>

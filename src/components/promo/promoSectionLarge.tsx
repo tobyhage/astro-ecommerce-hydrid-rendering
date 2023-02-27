@@ -1,24 +1,23 @@
 interface Props {
   title: string;
-  full_description: string;
+  full_description?: string;
   pageHeaderBgImg: string;
-  pageHeaderMinVh: string;
-  pageHeaderRadius: string;
+  pageHeaderMinVh?: string;
+  pageHeaderRadius?: string;
 }
 
-export default function TestimonialsFade({
+export default function PromoSectionLarge({
   title,
   full_description,
   pageHeaderBgImg,
   pageHeaderMinVh,
   pageHeaderRadius,
 }: Props) {
-
   const styles = {
     pageHeader: {
       backgroundImage: 'url(' + pageHeaderBgImg + ')',
       minHeight: pageHeaderMinVh,
-      borderRadius: pageHeaderRadius
+      borderRadius: pageHeaderRadius,
     },
   } as const;
 
@@ -31,8 +30,14 @@ export default function TestimonialsFade({
             <div className="row justify-content-center">
               <div className="col-lg-8 col-sm-9 text-center mx-auto">
                 <h1 className="text-white mb-4">{title}</h1>
-                <p className="lead text-white mb-sm-6 mb-4">{full_description}</p>
-                <button className="btn btn-white btn-lg">Show new arrivals</button>
+                {full_description && (
+                  <p className="lead text-white mb-sm-6 mb-4">
+                    {full_description}
+                  </p>
+                )}
+                <a className="btn btn-white btn-lg" href="/shop">
+                  Show now
+                </a>
               </div>
             </div>
           </div>
@@ -40,5 +45,4 @@ export default function TestimonialsFade({
       </section>
     </>
   );
-};
-
+}
