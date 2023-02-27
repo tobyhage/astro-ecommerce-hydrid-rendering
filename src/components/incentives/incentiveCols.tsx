@@ -1,19 +1,13 @@
-
-interface Props {
-  // order: string;
-}
-
-export default function incentiveCols({
-  order
-}: Props) {
-
+export default function incentiveCols() {
   return (
     <>
-     <div className="row mt-5">
+      <div className="row mt-5">
         <div className="col-12 col-md-4 d-flex align-items-center">
           <i className="fas fa-shipping-fast text-3xl text-primary me-4"></i>
           <div>
-            <p className="text-sm mb-1 opacity-8">We'll replace it with a new one</p>
+            <p className="text-sm mb-1 opacity-8">
+              We'll replace it with a new one
+            </p>
             <h6 className="text-sm">10 Years Warranty</h6>
           </div>
         </div>
@@ -34,4 +28,4 @@ export default function incentiveCols({
       </div>
     </>
   );
-};
+}

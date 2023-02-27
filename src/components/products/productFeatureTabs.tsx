@@ -1,25 +1,22 @@
+import type { ReactNode } from 'react';
+
 interface Props {
-  images: ({
+  images: {
     src: string;
     alt: string;
-  })[];
-  data: Map<string,string>
+  }[];
+  data: Map<string, string>;
 }
 
-export default function ProductAccordion({
-  images,
-  data
-}: Props) {
+export default function ProductAccordion({ images, data }: Props) {
+  const tabs: ReactNode[] = [];
 
-  const tabs = [];
-  let i = 0;
-
-  Object.entries(data).map(([title,value],i) => {    
+  Object.entries(data).map(([title, value], i) => {
     if (i != 0) {
       tabs.push(
         <div
           className="tab-pane active show"
-          id={"tab" + i}
+          id={'tab' + i}
           role="tabpanel"
           aria-labelledby="#profile"
         >
@@ -28,17 +25,21 @@ export default function ProductAccordion({
               <h5 className="mt-5 mb-4">{title}</h5>
               <p>{value}</p>
             </div>
-          
+
             <div className="col-12 col-lg-6 mb-lg-0 mb-4">
-              <img className="w-100 rounded-3" src={images[0].src} alt={images[0].alt} />
+              <img
+                className="w-100 rounded-3"
+                src={images[0].src}
+                alt={images[0].alt}
+              />
             </div>
           </div>
-        </div>
-      )
+        </div>,
+      );
     } else {
-      tabs.push()
+      tabs.push();
     }
-  })
+  });
 
   return (
     <>
@@ -48,8 +49,3 @@ export default function ProductAccordion({
     </>
   );
 }
-
-
-
-
-

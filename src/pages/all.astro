@@ -1,7 +1,8 @@
 ---
+// @ts-nocheck
+
 import Layout from '../layouts/Layout.astro';
 import data from '../../public/data.json';
-import '../../assets/scss/astro-ecommerce.scss';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import StoreNavbar from '../components/store/storeNavbar';
@@ -29,10 +30,10 @@ import OrderHistory from '../components/order/orderHistory';
 import IncentiveLarge from '../components/incentives/incentiveLarge';
 import IncentiveCols from '../components/incentives/incentiveCols';
 
-let cartItems = [];
-data.shoppingCart.map((id) =>
-  data.products.filter((x) => x.id == id).map((x) => cartItems.push(x)),
+let cartItems = data.shoppingCart.map((id) =>
+  data.products.filter((x) => x.id == id),
 );
+
 let cartItems2 = [];
 data.shoppingCart2.map((id) =>
   data.products.filter((x) => x.id == id).map((x) => cartItems2.push(x)),
@@ -64,7 +65,7 @@ data.orders.forEach((order) => {
 });
 ---
 
-<script>
+<script lang="js">
   function toggleHeart(e) {
     e.target.classList.toggle('fas');
     e.target.classList.toggle('far');

@@ -16,13 +16,15 @@ export default function CartItem({
   size,
   price,
   stock,
-
 }: Props) {
-
   return (
     <>
       <div className="d-block d-md-flex">
-        <img className="w-50 w-md-30 rounded-3 shadow-xs border" src={thumb_src} alt={thumb_alt} />
+        <img
+          className="w-50 w-md-30 rounded-3 shadow-xs border"
+          src={thumb_src}
+          alt={thumb_alt}
+        />
         <div className="w-100 w-md-50 pt-2 ps-md-4">
           <h6 className="text-lg mb-1">{title}</h6>
           <div className="d-flex">
@@ -31,21 +33,27 @@ export default function CartItem({
           </div>
           <h6 className="mb-1">${price.toFixed(2)}</h6>
           <div className="d-flex align-items-center mt-6">
-           {(stock) ? 
-            <>
-              <i className="fas fa-check text-lg text-success"></i>
-              <p className="mb-0 ms-2 text-sm">In Stock</p>
-            </>
-            :
-            <>
-              <i className="fas fa-minus-circle text-lg"></i>
-              <p className="mb-0 ms-2 text-sm">Out of Stock</p>
-            </>
-           }
+            {stock ? (
+              <>
+                <i className="fas fa-check text-lg text-success"></i>
+                <p className="mb-0 ms-2 text-sm">In Stock</p>
+              </>
+            ) : (
+              <>
+                <i className="fas fa-minus-circle text-lg"></i>
+                <p className="mb-0 ms-2 text-sm">Out of Stock</p>
+              </>
+            )}
           </div>
         </div>
         <div className="w-20 w-md-10 mt-4 mt-md-0">
-          <input type="number" min={0} className="form-control" placeholder="1" aria-label="amount" />
+          <input
+            type="number"
+            min={0}
+            className="form-control"
+            placeholder="1"
+            aria-label="amount"
+          />
         </div>
         <div className="w-10 text-end">
           <a href="#">

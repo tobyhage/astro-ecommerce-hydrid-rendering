@@ -1,15 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import data from '../../public/data.json';
-import '../../assets/scss/astro-ecommerce.scss';
-import CardCategory from '../components/products/cardCategory';
 import Navbar from '../components/navbar';
 import StoreDoubleColumn from '../components/store/storeDoubleColumn';
 import IncentiveLarge from '../components/incentives/incentiveLarge';
-import ProductOverviewGrid from '../components/products/productOverviewGrid';
 import ProductFeature from '../components/products/productFeature';
 
-import PromoSectionLarge from '../components/promo/promoSectionLarge';
+export const prerender = true;
 ---
 
 <Layout title="Landing Page">
