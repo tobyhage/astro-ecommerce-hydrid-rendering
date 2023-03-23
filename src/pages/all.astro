@@ -3,8 +3,8 @@
 
 import Layout from '../layouts/Layout.astro';
 import data from '../../public/data.json';
-import Navbar from '../components/navbar';
-import Footer from '../components/footer';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 import StoreNavbar from '../components/store/storeNavbar';
 import CardProduct from '../components/products/cardProduct';
 import CardCategory from '../components/products/cardCategory';
@@ -27,7 +27,6 @@ import ReviewSimple from '../components/reviews/reviewSimple';
 import ReviewSummaryChart from '../components/reviews/reviewSummaryChart';
 import OrderSummaries from '../components/order/orderSummaries';
 import OrderHistory from '../components/order/orderHistory';
-import IncentiveLarge from '../components/incentives/incentiveLarge';
 import IncentiveCols from '../components/incentives/incentiveCols';
 
 let cartItems = data.shoppingCart.map((id) =>
@@ -309,10 +308,6 @@ data.orders.forEach((order) => {
 
       <div class="my-10">
         <OrderHistory orders={data.orders} products={orderHistoryProducts} />
-      </div>
-
-      <div class="my-10">
-        <IncentiveLarge />
       </div>
 
       <div class="my-10">

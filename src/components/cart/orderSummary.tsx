@@ -20,7 +20,7 @@ export default function OrderSummary({ subtotal = 0, textColor }: Props) {
         <li className="border-bottom mt-3">
           <div className="d-flex justify-content-between">
             <p className={`opacity-8` + variant}>Subtotal</p>
-            <p className={`fw-bold opacity-8` + variant}>${sum.toFixed(2)}</p>
+            <p className={`fw-bold opacity-8` + variant}>${sum?.toFixed(2)}</p>
           </div>
         </li>
         <li className="border-bottom mt-3">
@@ -38,7 +38,7 @@ export default function OrderSummary({ subtotal = 0, textColor }: Props) {
               </span>
             </p>
             <p className={`fw-bold opacity-8` + variant}>
-              ${shipping.toFixed(2)}
+              ${shipping?.toFixed(2)}
             </p>
           </div>
         </li>
@@ -56,14 +56,14 @@ export default function OrderSummary({ subtotal = 0, textColor }: Props) {
                 <i className="fas fa-question-circle text-sm"></i>
               </span>
             </p>
-            <p className={`fw-bold opacity-8` + variant}>${tax.toFixed(2)}</p>
+            <p className={`fw-bold opacity-8` + variant}>${tax?.toFixed(2)}</p>
           </div>
         </li>
         <li className="mt-4">
           <div className="d-flex justify-content-between">
             <h5 className={variant}>Order Total</h5>
             <h5 className={variant}>
-              ${(subtotal + shipping + tax).toFixed(2)}
+              ${(subtotal + shipping + tax)?.toFixed(2)}
             </h5>
           </div>
         </li>

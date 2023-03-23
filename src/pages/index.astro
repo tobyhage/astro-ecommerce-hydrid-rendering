@@ -1,10 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import data from '../../public/data.json';
+
+import Testimonials from '../components/Testimonials.astro';
+
 import CardCategory from '../components/products/cardCategory';
-import Navbar from '../components/navbar';
-import StoreDoubleColumn from '../components/store/storeDoubleColumn';
-import TestimonialsFade from '../components/promo/testimonialsFade';
 import PromoSectionLarge from '../components/promo/promoSectionLarge';
 
 export const prerender = true;
@@ -12,13 +12,13 @@ export const prerender = true;
 
 <Layout title="Landing Page">
   <main>
-    <Navbar />
     <PromoSectionLarge
       title=" Experience the Future of VR"
       full_description="Immerse yourself in a new world of entertainment, gaming, and education with our high-quality virtual reality headsets. With cutting-edge technology and comfortable designs, our headsets allow you to experience a new level of immersion and interactivity. Whether you want to explore new worlds, compete in virtual reality games, or attend virtual events, our headsets provide an unforgettable experience. Discover the future of entertainment and education with our virtual reality headsets today!"
       pageHeaderBgImg="https://images.unsplash.com/photo-1626379953822-baec19c3accd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3570&q=80"
       pageHeaderMinVh="90vh"
     />
+
     <div class="container my-5">
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h4>Shop by category</h4>
@@ -48,10 +48,8 @@ export const prerender = true;
       />
 
       <div class="mt-5 mb-10">
-        <TestimonialsFade testimonials={data.testimonials} />
+        <Testimonials testimonials={data.testimonials} />
       </div>
-
-      <StoreDoubleColumn />
     </div>
   </main>
 </Layout>

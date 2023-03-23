@@ -9,6 +9,7 @@ interface Props {
   color?: string;
   colors?: string[];
   position: string;
+  href: string;
 }
 
 export default function CardProduct({
@@ -20,13 +21,14 @@ export default function CardProduct({
   color,
   colors,
   position,
+  href,
 }: Props) {
   const classList = 'card-body ' + 'text-' + position;
 
   return (
     <>
       <div className="card card-product border border-white mb-5 shadow-xs">
-        <a href="#">
+        <a href={href}>
           <div className="height-300">
             <img
               className="w-100 h-100 rounded-top"
@@ -42,14 +44,14 @@ export default function CardProduct({
 
             {price && (
               <p className="mb-0 text-sm text-body mt-1 mb-3">
-                ${price.toFixed(2)}
+                ${price?.toFixed(2)}
               </p>
             )}
 
             {colors && <ProductBadge colors={colors} />}
 
             {!(description || colors || color) && (
-              <a href="#" className="font-weight-normal text-body text-sm">
+              <a href={href} className="font-weight-normal text-body text-sm">
                 Shop Now
               </a>
             )}

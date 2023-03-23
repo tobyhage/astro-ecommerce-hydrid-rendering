@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CardProduct from '../components/products/cardProduct';
+import { fetchProducts, fetchCategories } from '../api/products';
+import CategoryPills from '../components/CategoryPills.astro';
+
+const category = Astro.url.searchParams.get('category') || '';
+const { products } = await fetchProducts(category);
+const categories = await fetchCategories();
+---
+
+<Layout title="Shop">
+  <div class="container mt-5">
+    <div class="row">
+      <CategoryPills categories={categories} selected={category} />
+    </div>
+    <div class="row">
+      {
+        products.map((product) => (
+          <div class="col-md-6 col-lg-3">
+            <CardProduct
+              thumb_src={product.thumbnail}
+              thumb_alt={product.title}
+              title={product.title}
+              description={product.description}
+              price={product.price}
+              position="center"
+              href={`/product/${product.id}`}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Layout>

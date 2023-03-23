@@ -30,7 +30,7 @@ export default function CheckoutSummary({ products }: Props) {
         <div className="row">
           <div className="col-12 col-lg-6 p-lg-5">
             <small className="text-white opacity-6">Amount due</small>
-            <h3 className="text-white">${subtotalCheckout.toFixed(2)}</h3>
+            <h3 className="text-white">${subtotalCheckout?.toFixed(2)}</h3>
             {products.map((product, i) => (
               <CheckoutSingleItemDark
                 thumb_src={product.thumb_src}

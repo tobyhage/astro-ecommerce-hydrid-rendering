@@ -1,9 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import data from '../../public/data.json';
-import Navbar from '../components/navbar';
+
 import StoreDoubleColumn from '../components/store/storeDoubleColumn';
-import IncentiveLarge from '../components/incentives/incentiveLarge';
+import IncentiveLarge from '../components/incentives/IncentiveLarge.astro';
 import ProductFeature from '../components/products/productFeature';
 
 export const prerender = true;
@@ -11,17 +10,83 @@ export const prerender = true;
 
 <Layout title="Landing Page">
   <main>
-    <Navbar />
     <div class="container my-5">
       <ProductFeature
-        title={data.about.title}
-        images={data.about.images}
-        full_description={data.about.mission}
-        featuresDetails={data.about.values}
+        title="About us"
+        full_description={`
+          Our mission is to provide cutting-edge virtual reality technology and
+          accessories to our customers, enhancing their entertainment experiences
+          and bringing them closer to their passions and hobbies.
+        `}
+        images={[
+          {
+            src: 'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+            alt: 'first_image',
+          },
+          {
+            src: 'https://images.unsplash.com/photo-1605647540924-852290f6b0d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2274&q=80',
+            alt: 'second_image',
+          },
+          {
+            src: 'https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2012&q=80',
+            alt: 'third_image',
+          },
+          {
+            src: 'https://images.unsplash.com/photo-1627645812426-67ce7b0a7a81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80',
+            alt: 'fourth_image',
+          },
+          {
+            src: 'https://images.unsplash.com/photo-1639931897192-caa5fe8a628c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2664&q=80',
+            alt: 'fifth_image',
+          },
+          {
+            src: 'https://images.unsplash.com/photo-1502185635613-0a5b2e78efea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+            alt: 'sixth_image',
+          },
+        ]}
+        featuresDetails={{
+          Innovation:
+            'We are dedicated to staying at the forefront of the virtual reality industry, constantly seeking out new and innovative products and technologies to bring to our customers.',
+          Quality:
+            'We are committed to providing the highest quality virtual reality products, ensuring that our customers have the best possible experience.',
+          Accessibility:
+            'We believe that everyone should have access to the latest virtual reality technology, and work to provide affordable options for all.',
+          Sustainability:
+            'We are committed to minimizing our environmental impact and promoting sustainable practices, from our packaging materials to our energy consumption.',
+        }}
       />
 
       <div class="my-10">
-        <IncentiveLarge />
+        <IncentiveLarge
+          title="We build our business on customer service"
+          description={`
+            It’s like a little kid, a little boy, looking at colors, and no one
+            told him what colors are good, before somebody tells you you shouldn’t
+            like pink because that’s for girls, or you’d instantly become a gay
+            two-year-old. Why would anyone pick blue over pink? Pink is obviously
+            a better color.
+          `}
+          items={[
+            {
+              icon: 'fa-shipping-fast',
+              title: 'Free Shipping',
+              description:
+                'There’s nothing I really wanted to do in life that I wasn’t able to get good at. That’s my skill.',
+            },
+            {
+              icon: 'fa-user',
+              title: '10 Years Warranty',
+              description:
+                'I’m not really specifically talented at anything except for the ability to learn.',
+            },
+            {
+              icon: 'fa-sync-alt',
+              title: 'Exchange',
+              description:
+                'Then we lose family over time. What else could rust the heart more over time? Blackgold.',
+            },
+          ]}
+        />
       </div>
 
       <StoreDoubleColumn />

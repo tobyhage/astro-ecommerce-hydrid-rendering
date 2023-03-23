@@ -64,7 +64,7 @@ export default function ProductQuickview({
                   {price && (
                     <>
                       <div className="d-flex mb-3">
-                        <h6>${price.toFixed(2)}</h6>
+                        <h6>${price?.toFixed(2)}</h6>
                         <input className="opacity-0" defaultValue={price} />
                       </div>
                     </>

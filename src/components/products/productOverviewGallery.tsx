@@ -28,6 +28,7 @@ export default function productOverviewGallery({
   reviews,
   data,
 }: Props) {
+  console.log(images);
   return (
     <>
       <div className="card card-product card-plain">
@@ -38,7 +39,7 @@ export default function productOverviewGallery({
             {price && (
               <>
                 <div className="d-flex mb-3">
-                  <h3 className="font-weight-normal">${price.toFixed(2)}</h3>
+                  <h3 className="font-weight-normal">${price?.toFixed(2)}</h3>
                   <input className="opacity-0" defaultValue={price} />
                 </div>
               </>

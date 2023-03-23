@@ -31,7 +31,7 @@ export default function CartItem({
             <p className="pe-3 mb-0">{color}</p>
             <p className="border-start ps-3 mb-0">{size}</p>
           </div>
-          <h6 className="mb-1">${price.toFixed(2)}</h6>
+          <h6 className="mb-1">${price?.toFixed(2)}</h6>
           <div className="d-flex align-items-center mt-6">
             {stock ? (
               <>

@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductOverviewGallery from '../../components/products/productOverviewGallery';
+import data from '../../../public/data.json';
+
+import CardProduct from '../../components/products/cardProduct';
+import { fetchProduct } from '../../api/products';
+import { humanize } from '../../helpers';
+
+const { id } = Astro.params;
+
+if (!id) return Astro.redirect('/404');
+
+const product = await fetchProduct(id);
+---
+
+<Layout title="Shop">
+  <div class="container mt-5">
+    <ProductOverviewGallery
+      colors={[]}
+      images={product.images.map((src) => ({ src, alt: product.title }))}
+      title={product.title}
+      full_description={product.description}
+      price={product.price}
+      rating={product.rating}
+      reviews={Math.floor(product.discountPercentage)}
+      data={{
+        Brand: product.brand,
+        'Original price': `
+          Discount applied: ${product.discountPercentage}%.
+          The original price was: $${Math.floor(
+            product.price / (1 - product.discountPercentage / 100),
+          )}!`,
+        Category: humanize(product.category),
+        Stock: `${product.stock} available`,
+      }}
+    />
+  </div>
+</Layout>

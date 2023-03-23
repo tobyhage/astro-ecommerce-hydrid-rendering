@@ -29,7 +29,7 @@ export default function OrderSummary({ product, status, dateModified }: Props) {
           </p>
         </th>
         <td className="text-sm text-secondary align-middle pt-3">
-          ${product.price.toFixed(2)}
+          ${product.price?.toFixed(2)}
         </td>
         <td className="text-sm text-secondary align-middle pt-3">
           {status} {dateModified}
