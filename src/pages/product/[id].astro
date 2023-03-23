@@ -1,39 +1,70 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ProductOverviewGallery from '../../components/products/productOverviewGallery';
-import data from '../../../public/data.json';
-
 import CardProduct from '../../components/products/cardProduct';
-import { fetchProduct } from '../../api/products';
+
+import { fetchProduct, fetchProducts } from '../../api/products';
 import { humanize } from '../../helpers';
 
 const { id } = Astro.params;
 
-if (!id) return Astro.redirect('/404');
+if (!id) {
+  return Astro.redirect('/404');
+}
 
 const product = await fetchProduct(id);
+if (!product) {
+  return Astro.redirect('/404');
+}
+
+const relatedProducts = await fetchProducts(product.category);
+
+const originalPrice = Math.floor(
+  product.price / (1 - product.discountPercentage / 100),
+);
+
+const data = {
+  Brand: product.brand,
+  'Original price': `Discount applied: ${product.discountPercentage}%. The original price was: $${originalPrice}!`,
+  Category: humanize(product.category),
+  Stock: `${product.stock} available`,
+};
 ---
 
 <Layout title="Shop">
   <div class="container mt-5">
-    <ProductOverviewGallery
-      colors={[]}
-      images={product.images.map((src) => ({ src, alt: product.title }))}
-      title={product.title}
-      full_description={product.description}
-      price={product.price}
-      rating={product.rating}
-      reviews={Math.floor(product.discountPercentage)}
-      data={{
-        Brand: product.brand,
-        'Original price': `
-          Discount applied: ${product.discountPercentage}%.
-          The original price was: $${Math.floor(
-            product.price / (1 - product.discountPercentage / 100),
-          )}!`,
-        Category: humanize(product.category),
-        Stock: `${product.stock} available`,
-      }}
-    />
+    <div class="my-5">
+      <ProductOverviewGallery
+        colors={[]}
+        images={product.images.map((src) => ({ src, alt: product.title }))}
+        title={product.title}
+        full_description={product.description}
+        price={product.price}
+        rating={product.rating}
+        reviews={Math.floor(product.discountPercentage)}
+        data={data}
+      />
+    </div>
+
+    <div class="row">
+      <h5 class="mb-4">Customers also purchased</h5>
+      {
+        relatedProducts.products
+          .filter((related) => related.id !== product.id)
+          .map((related) => (
+            <div class="col-md-6 col-lg-3">
+              <CardProduct
+                thumb_src={related.thumbnail}
+                thumb_alt={related.title}
+                color={related.brand}
+                title={related.title}
+                price={related.price}
+                position="left"
+                href={`/product/${related.id}`}
+              />
+            </div>
+          ))
+      }
+    </div>
   </div>
 </Layout>

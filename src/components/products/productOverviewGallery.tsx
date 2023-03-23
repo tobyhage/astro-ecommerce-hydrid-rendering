@@ -15,7 +15,7 @@ interface Props {
   rating: number;
   reviews: number;
   full_description: string;
-  data: Map<string, string>;
+  data: Record<string, string>;
 }
 
 export default function productOverviewGallery({

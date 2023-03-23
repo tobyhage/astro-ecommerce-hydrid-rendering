@@ -19,7 +19,13 @@ export interface Product {
   images: string[];
 }
 
-const toJson = (res: Response) => res.json();
+const toJson = (res: Response) => {
+  if (res.status === 404) {
+    return undefined;
+  }
+
+  return res.json();
+};
 
 export const fetchProducts = (category?: string): Promise<ProductList> => {
   const categoryPath = category ? `/category/${category}` : '';
