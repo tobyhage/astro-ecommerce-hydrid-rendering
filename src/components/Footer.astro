@@ -1,6 +1,6 @@
 ---
 import { fetchCategories, fetchSalesProducts } from '../api/products';
-import { humanize } from '../helpers';
+import humanize from 'humanize-string';
 
 const categories = await fetchCategories();
 const sales = await fetchSalesProducts();

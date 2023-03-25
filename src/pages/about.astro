@@ -1,10 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+// Components from the starter
 import IncentiveLarge from '../components/incentives/IncentiveLarge.astro';
 import ProductFeature from '../components/products/productFeature';
 
 export const prerender = true;
+
+const features = {
+  Quality: `We carefully select and curate our products to ensure that they meet the
+    highest standards of quality and craftsmanship. We believe that our customers
+    deserve the best, and we are committed to delivering it.`,
+  Sustainability: `We believe in doing our part to protect the planet, which is why
+    we work with suppliers who prioritize eco-friendly and sustainable production methods.
+    We believe that we can make a positive impact on the world by making conscious choices
+    about the products we offer and the way we do business.`,
+  ['Customer Service']: `We are passionate about providing exceptional customer service and support.
+    Our team is always here to help with any questions or concerns you may have, and we are committed
+    to making sure that you have a positive experience every time you shop with us.`,
+  Innovation: `We are always exploring new ways to improve and enhance our online store. We believe
+    that innovation is key to staying ahead of the curve and providing our customers with the best
+    possible shopping experience.`,
+};
 ---
 
 <Layout title="Landing Page">
@@ -19,73 +36,53 @@ export const prerender = true;
         `}
         images={[
           {
-            src: 'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
-            alt: 'first_image',
+            src: 'https://images.unsplash.com/photo-1511556820780-d912e42b4980?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80',
+            alt: 'photo of bag, sneakers, and sunglasses on beige surface',
           },
           {
-            src: 'https://images.unsplash.com/photo-1605647540924-852290f6b0d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2274&q=80',
-            alt: 'second_image',
+            src: 'https://images.unsplash.com/photo-1627384113743-6bd5a479fffd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',
+            alt: 'black and gold calvin klein perfume bottle',
           },
           {
-            src: 'https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2012&q=80',
-            alt: 'third_image',
+            src: 'https://images.unsplash.com/photo-1522682078546-47888fe04e81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',
+            alt: 'red and yellow Biscuits neon light signage hanged on gray brick wall',
           },
           {
-            src: 'https://images.unsplash.com/photo-1627645812426-67ce7b0a7a81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80',
-            alt: 'fourth_image',
-          },
-          {
-            src: 'https://images.unsplash.com/photo-1639931897192-caa5fe8a628c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2664&q=80',
-            alt: 'fifth_image',
-          },
-          {
-            src: 'https://images.unsplash.com/photo-1502185635613-0a5b2e78efea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
-            alt: 'sixth_image',
+            src: 'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',
+            alt: 'white corded headphones',
           },
         ]}
-        featuresDetails={{
-          Quality:
-            'We carefully select and curate our products to ensure that they meet the highest standards of quality and craftsmanship. We believe that our customers deserve the best, and we are committed to delivering it.',
-
-          Sustainability:
-            'We believe in doing our part to protect the planet, which is why we work with suppliers who prioritize eco-friendly and sustainable production methods. We believe that we can make a positive impact on the world by making conscious choices about the products we offer and the way we do business.',
-
-          ['Customer Service']:
-            'We are passionate about providing exceptional customer service and support. Our team is always here to help with any questions or concerns you may have, and we are committed to making sure that you have a positive experience every time you shop with us.',
-
-          Innovation:
-            'We are always exploring new ways to improve and enhance our online store. We believe that innovation is key to staying ahead of the curve and providing our customers with the best possible shopping experience.',
-        }}
+        featuresDetails={features}
       />
 
       <div class="my-10">
         <IncentiveLarge
           title="We build our business on customer service"
           description={`
-            It’s like a little kid, a little boy, looking at colors, and no one
-            told him what colors are good, before somebody tells you you shouldn’t
-            like pink because that’s for girls, or you’d instantly become a gay
-            two-year-old. Why would anyone pick blue over pink? Pink is obviously
-            a better color.
+            Our company provides exceptional customer service with a dedicated team ready to assist
+            you with any questions or concerns. We offer prompt and courteous support for placing
+            an order, tracking a shipment, or resolving any product issues. Contact us by phone,
+            email, or live chat during regular business hours. Thank you for choosing us, and we
+            look forward to providing you with a great customer experience.
           `}
           items={[
+            {
+              icon: 'fa-sync-alt',
+              title: 'Exchange',
+              description: `Try something new without worry with our exchange policy. If you're not satisfied with your
+                purchase, you can exchange it within a specified timeframe. `,
+            },
             {
               icon: 'fa-shipping-fast',
               title: 'Free Shipping',
               description:
-                'There’s nothing I really wanted to do in life that I wasn’t able to get good at. That’s my skill.',
+                'Enjoy free shipping on all orders and save money while making shopping more convenient.',
             },
             {
               icon: 'fa-user',
               title: '10 Years Warranty',
-              description:
-                'I’m not really specifically talented at anything except for the ability to learn.',
-            },
-            {
-              icon: 'fa-sync-alt',
-              title: 'Exchange',
-              description:
-                'Then we lose family over time. What else could rust the heart more over time? Blackgold.',
+              description: `Rest easy with the knowledge that your purchase comes with a 10-year warranty.
+                This gives you peace of mind and reassurance that your investment is wise.`,
             },
           ]}
         />

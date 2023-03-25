@@ -1,18 +1,20 @@
 ---
+import humanize from 'humanize-string';
+
 import Layout from '../layouts/Layout.astro';
-import data from '../../public/data.json';
 
+// Components from the starter
 import Testimonials from '../components/Testimonials.astro';
-
 import CardCategory from '../components/products/cardCategory';
 import PromoSectionLarge from '../components/promo/promoSectionLarge';
+
 import {
   fetchCategories,
   fetchCategoryImage,
   fetchTestimonials,
 } from '../api/products';
-import { humanize } from '../helpers';
 
+// Setting SSG for this page!
 export const prerender = true;
 
 const categories = (await fetchCategories()).slice(0, 4);

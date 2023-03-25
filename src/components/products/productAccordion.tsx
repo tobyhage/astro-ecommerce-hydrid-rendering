@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 interface Props {
-  data: Map<string, string>;
+  data: Record<string, string>;
 }
 
 export default function ProductAccordion({ data }: Props) {

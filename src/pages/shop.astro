@@ -1,18 +1,50 @@
 ---
+import humanize from 'humanize-string';
 import Layout from '../layouts/Layout.astro';
-import CardProduct from '../components/products/cardProduct';
-import { fetchProducts, fetchCategories } from '../api/products';
-import CategoryPills from '../components/CategoryPills.astro';
 
-const category = Astro.url.searchParams.get('category') || '';
-const { products } = await fetchProducts(category);
+// Components from the starter
+import CardProduct from '../components/products/cardProduct';
+
+import { fetchProducts, fetchCategories } from '../api/products';
+
+// get category from query params
+const currentCategory = Astro.url.searchParams.get('category') || '';
+
 const categories = await fetchCategories();
+const { products } = await fetchProducts(currentCategory);
 ---
 
 <Layout title="Shop">
   <div class="container mt-5">
     <div class="row">
-      <CategoryPills categories={categories} selected={category} />
+      <div class="mt-4 d-flex justify-content-between align-items-center">
+        <h6 class="mb-0">Select a category:</h6>
+      </div>
+      <div class="d-flex flex-wrap text-center my-4">
+        {
+          categories.map((category) => {
+            const checked = currentCategory === category;
+            const route = checked ? '' : `category=${category}`;
+            return (
+              <div class="mb-3 me-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input rounded-2"
+                    type="radio"
+                    name="flexRadioDefault"
+                    checked={checked}
+                    id={`check-` + category}
+                    onclick={`window.location.assign('?${route}')`}
+                  />
+                  <label class="cursor-pointer" for={`check-` + category}>
+                    {humanize(category)}
+                  </label>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
     </div>
     <div class="row">
       {
