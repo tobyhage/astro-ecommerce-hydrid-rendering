@@ -1,14 +1,76 @@
 ---
-const date = new Date().getFullYear();
+import { fetchCategories, fetchSalesProducts } from '../api/products';
+import { humanize } from '../helpers';
+
+const categories = await fetchCategories();
+const sales = await fetchSalesProducts();
 ---
 
-<footer class="border-top p-4">
-  <div class="copyright text-center text-sm text-muted">
-    All rights reserved. Copyright © {date} &nbsp;Astro Ecommerce by
-    <a
-      href="https://www.creative-tim.com"
-      class="text-secondary ms-1"
-      target="_blank">Creative Tim</a
-    >.
+<footer class="container">
+  <div class="row mt-5 mb-2">
+    <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+      <h6 class="w-100 pb-3 border-bottom">Categories</h6>
+      <div class="d-flex pt-2">
+        <ul class="nav flex-column ms-n3">
+          {
+            categories.slice(0, 4).map((category) => (
+              <li class="nav-item">
+                <a
+                  class="nav-link text-body"
+                  href={`/shop?category=${category}`}
+                >
+                  {humanize(category)}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <ul class="nav flex-column ms-6 ms-md-11 ms-lg-10">
+          {
+            categories.slice(4, 8).map((category) => (
+              <li class="nav-item">
+                <a
+                  class="nav-link text-body"
+                  href={`/shop?category=${category}`}
+                >
+                  {humanize(category)}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <h6 class="w-100 pb-3 border-bottom">Sales & Deals</h6>
+      <ul class="nav flex-column ms-n3 pt-2">
+        {
+          sales.slice(4, 8).map((product) => (
+            <li class="nav-item">
+              <a class="nav-link text-body" href={`/product/${product.id}`}>
+                {humanize(product.title)}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="col-6 col-lg-3">
+      <h6 class="w-100 pb-3 border-bottom">Company Info</h6>
+      <ul class="nav flex-column ms-n3 pt-2">
+        <li class="nav-item">
+          <a class="nav-link text-body" href="/about"> About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-body" href="#"> Shipping and Delivery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-body" href="#"> Privacy Policy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-body" href="#"> FAQ</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </footer>

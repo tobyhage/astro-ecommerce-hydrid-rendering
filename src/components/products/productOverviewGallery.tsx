@@ -28,7 +28,6 @@ export default function productOverviewGallery({
   reviews,
   data,
 }: Props) {
-  console.log(images);
   return (
     <>
       <div className="card card-product card-plain">

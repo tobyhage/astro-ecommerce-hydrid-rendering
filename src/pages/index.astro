@@ -6,49 +6,61 @@ import Testimonials from '../components/Testimonials.astro';
 
 import CardCategory from '../components/products/cardCategory';
 import PromoSectionLarge from '../components/promo/promoSectionLarge';
+import {
+  fetchCategories,
+  fetchCategoryImage,
+  fetchTestimonials,
+} from '../api/products';
+import { humanize } from '../helpers';
 
 export const prerender = true;
+
+const categories = (await fetchCategories()).slice(0, 4);
+const images = await Promise.all(categories.map(fetchCategoryImage));
+const testimonials = await fetchTestimonials();
 ---
 
 <Layout title="Landing Page">
   <main>
     <PromoSectionLarge
-      title=" Experience the Future of VR"
-      full_description="Immerse yourself in a new world of entertainment, gaming, and education with our high-quality virtual reality headsets. With cutting-edge technology and comfortable designs, our headsets allow you to experience a new level of immersion and interactivity. Whether you want to explore new worlds, compete in virtual reality games, or attend virtual events, our headsets provide an unforgettable experience. Discover the future of entertainment and education with our virtual reality headsets today!"
-      pageHeaderBgImg="https://images.unsplash.com/photo-1626379953822-baec19c3accd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3570&q=80"
+      title="Welcome to our online store!"
+      full_description="Satisfy all your shopping needs with our extensive range of high-quality products, carefully curated to offer the latest trends and timeless classics. Whether you're looking for stylish clothing, must-have accessories, beautiful home decor, or the latest tech gadgets, we have everything you need to elevate your lifestyle and express your unique style."
+      pageHeaderBgImg="https://images.unsplash.com/photo-1441123285228-1448e608f3d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80"
       pageHeaderMinVh="90vh"
     />
 
     <div class="container my-5">
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h4>Shop by category</h4>
-        <a class="text-primary text-sm font-weight-bold" href="#"
+        <a class="text-primary text-sm font-weight-bold" href="/shop"
           >Browse all categories {'>'}</a
         >
       </div>
       <div class="row mb-5">
         {
-          data.categories.map((category) => (
+          categories.map((category, i) => (
             <div class="col-md-6 col-lg-3">
-              <CardCategory
-                thumb_src={category.thumb_src}
-                title={category.title}
-              />
+              <a href={`/shop?category=${category}`}>
+                <CardCategory
+                  thumb_src={images[i]}
+                  title={humanize(category)}
+                />
+              </a>
             </div>
           ))
         }
       </div>
 
       <PromoSectionLarge
-        title="VR Headset Sales"
-        full_description="Check out our virtual reality headset sales section to find amazing deals on headsets and accessories. Discover clearance items, bundle deals, and limited-time offers that provide extra savings. Plus, take advantage of free shipping on qualifying orders. Start exploring the world of virtual reality today with our top-quality equipment at discounted prices."
-        pageHeaderBgImg="https://images.unsplash.com/photo-1653158861306-e5b3804f6115?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+        title="Featured products"
+        full_description="Take a look at our featured products to see what's new and popular right now."
+        pageHeaderBgImg="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2274&q=80"
         pageHeaderMinVh="50vh"
         pageHeaderRadius="1rem"
       />
 
       <div class="mt-5 mb-10">
-        <Testimonials testimonials={data.testimonials} />
+        <Testimonials testimonials={testimonials} />
       </div>
     </div>
   </main>

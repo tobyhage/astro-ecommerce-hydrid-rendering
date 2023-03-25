@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-import StoreDoubleColumn from '../components/store/storeDoubleColumn';
 import IncentiveLarge from '../components/incentives/IncentiveLarge.astro';
 import ProductFeature from '../components/products/productFeature';
 
@@ -14,9 +13,9 @@ export const prerender = true;
       <ProductFeature
         title="About us"
         full_description={`
-          Our mission is to provide cutting-edge virtual reality technology and
-          accessories to our customers, enhancing their entertainment experiences
-          and bringing them closer to their passions and hobbies.
+          At Astro E-commerce, we are dedicated to providing our customers with the best possible
+          shopping experience. We believe that shopping should be easy, convenient, and enjoyable,
+          and we strive to make that a reality for everyone who visits our site.
         `}
         images={[
           {
@@ -45,14 +44,17 @@ export const prerender = true;
           },
         ]}
         featuresDetails={{
-          Innovation:
-            'We are dedicated to staying at the forefront of the virtual reality industry, constantly seeking out new and innovative products and technologies to bring to our customers.',
           Quality:
-            'We are committed to providing the highest quality virtual reality products, ensuring that our customers have the best possible experience.',
-          Accessibility:
-            'We believe that everyone should have access to the latest virtual reality technology, and work to provide affordable options for all.',
+            'We carefully select and curate our products to ensure that they meet the highest standards of quality and craftsmanship. We believe that our customers deserve the best, and we are committed to delivering it.',
+
           Sustainability:
-            'We are committed to minimizing our environmental impact and promoting sustainable practices, from our packaging materials to our energy consumption.',
+            'We believe in doing our part to protect the planet, which is why we work with suppliers who prioritize eco-friendly and sustainable production methods. We believe that we can make a positive impact on the world by making conscious choices about the products we offer and the way we do business.',
+
+          ['Customer Service']:
+            'We are passionate about providing exceptional customer service and support. Our team is always here to help with any questions or concerns you may have, and we are committed to making sure that you have a positive experience every time you shop with us.',
+
+          Innovation:
+            'We are always exploring new ways to improve and enhance our online store. We believe that innovation is key to staying ahead of the curve and providing our customers with the best possible shopping experience.',
         }}
       />
 
@@ -88,8 +90,6 @@ export const prerender = true;
           ]}
         />
       </div>
-
-      <StoreDoubleColumn />
     </div>
   </main>
 </Layout>
