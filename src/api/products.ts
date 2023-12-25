@@ -27,9 +27,9 @@ const toJson = (res: Response) => {
   return res.json();
 };
 
-export const fetchProducts = (category?: string): Promise<ProductList> => {
+export const fetchProducts = async (category?: string): Promise<ProductList> => {
   const categoryPath = category ? `/category/${category}` : '';
-  return fetch(`https://dummyjson.com/products${categoryPath}`).then(toJson);
+  return await fetch(`https://dummyjson.com/products${categoryPath}`).then(toJson);
 };
 
 export const fetchSalesProducts = async (): Promise<Product[]> => {
