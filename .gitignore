@@ -5,4 +5,4 @@ node_modules/
 build-product/
 .DS_Store
 dist/
-.vercel/
+bun.lockb

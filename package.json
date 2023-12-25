@@ -57,5 +57,8 @@
   "bugs": {
     "url": "https://github.com/creativetimofficial/astro-ecommerce/issues"
   },
-  "homepage": "https://www.creative-tim.com/astro"
+  "homepage": "https://www.creative-tim.com/astro",
+  "engines": {
+    "node": ">=20.10.0"
+  }
 }
